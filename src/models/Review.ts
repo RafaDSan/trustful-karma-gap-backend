@@ -24,6 +24,7 @@ const preReviewSchema = new mongoose.Schema({
 		receivedGrant: { type: String, enum: Object.values(ReceivedGrant), required: true }
 	},
 	grantId: { type: Number, required: true },
+	programId: { type: Number, required: false },
 	createdAt: { type: Date, default: Date.now },
 	updatedAt: { type: Date, default: Date.now }
 });

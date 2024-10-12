@@ -19,7 +19,7 @@ export class ReviewController {
 	 */
 	async createPreReview(req: Request<{}, {}, CreatePreReviewRequest>, res: Response): Promise<void> {
 		try {
-			const { preReviewAnswers, connectedUserAddress, grantId } = req.body;
+			const { preReviewAnswers, connectedUserAddress, grantId, programId } = req.body;
 
 			let user = await User.findOne({ connectedUserAddress });
 
@@ -32,7 +32,8 @@ export class ReviewController {
 			const newPreReview = new PreReview({
 				user: user._id,
 				preReviewAnswers,
-				grantId
+				grantId,
+				programId
 			});
 
 			await newPreReview.save();
